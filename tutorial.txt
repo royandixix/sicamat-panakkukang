@@ -1,0 +1,101 @@
+Untuk menjalankan kembali proyek SICAMAT 3, gunakan dua Terminal terpisah.
+
+Terminal 1 — Jalankan API/backend
+
+Pastikan MySQL/XAMPP sudah aktif, lalu jalankan:
+
+cd "/Users/mac/Downloads/sicamat 3"
+./scripts/02_run_api_macos.command
+
+Tunggu sampai muncul:
+
+SICAMAT API berjalan pada http://0.0.0.0:8081
+
+Biarkan Terminal ini tetap terbuka.
+
+Untuk memeriksa API:
+
+curl -i http://localhost:8081/api/health
+
+Hasil yang benar:
+
+HTTP/1.1 200 OK
+Terminal 2 — Jalankan Flutter Web
+
+Buka tab Terminal baru dengan tombol keyboard ⌘ + T, lalu jalankan:
+
+cd "/Users/mac/Downloads/sicamat 3"
+./scripts/03_run_web_macos.command
+
+Atau jalankan secara manual:
+
+cd "/Users/mac/Downloads/sicamat 3/kantor_camat_app"
+
+flutter pub get
+
+flutter run -d chrome \
+  --dart-define=API_BASE_URL=http://localhost:8081/api
+
+Chrome akan terbuka otomatis.
+
+Akun login SICAMAT
+
+Semua akun demo menggunakan password yang sama:
+
+Sicamat123!
+Role	Email	Password
+Kasubag Umum	kasubag@sicamat.local	Sicamat123!
+Camat	camat@sicamat.local	Sicamat123!
+Seksi Pemerintahan	pemerintahan@sicamat.local	Sicamat123!
+Seksi Ketenteraman dan Ketertiban	trantib@sicamat.local	Sicamat123!
+Masyarakat/Warga	warga@sicamat.local	Sicamat123!
+Untuk menguji fitur paling lengkap
+
+Login menggunakan:
+
+Email    : kasubag@sicamat.local
+Password : Sicamat123!
+Role     : Kasubag Umum
+
+Akun Kasubag memiliki akses paling luas untuk menguji:
+
+Dashboard
+Surat
+Disposisi
+Pengajuan
+Layanan
+Kegiatan
+Pengguna
+Clustering K-Means
+Laporan
+Profil
+Untuk mengecek pembatasan role
+
+Gunakan akun berikut secara bergantian:
+
+camat@sicamat.local
+
+Untuk melihat akses pimpinan.
+
+pemerintahan@sicamat.local
+trantib@sicamat.local
+
+Untuk melihat akses seksi dan disposisi yang diarahkan.
+
+warga@sicamat.local
+
+Untuk menguji pengajuan serta pelacakan layanan masyarakat.
+
+Saat selesai menggunakan aplikasi
+
+Pada Terminal Flutter, tekan:
+
+q
+
+Pada Terminal API, tekan:
+
+Control + C
+
+Pastikan tidak menjalankan script API dua kali, karena akan muncul error:
+
+Address already in use, port 8081
